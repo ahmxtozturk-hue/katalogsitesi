@@ -1,6 +1,3 @@
-<!-- aradığın şey burada değil --> 
-
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
