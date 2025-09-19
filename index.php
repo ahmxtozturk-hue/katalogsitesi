@@ -8,22 +8,30 @@
     <meta http-equiv="Expires" content="0">
     <link rel="icon" type="image/svg+xml" href="https://katalog.gunesegel.net/assets/images/favicon.svg">
     <title>Solis Bilezik | Katalog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/basicLightbox/5.0.4/basicLightbox.min.css">
     <style>
         :root {
-            --primary-color: #F0FFFF;
+            --primary-color: #FFFFFF;
             --secondary-color: #D4AF37;
-            --dark-color: #0a0a1a;
-            --light-color: #f0f8ff; 
+            --dark-color: #000000;
+            --light-color: #EAEAEA;
             --accent-color: #ffd700;
-            --card-bg-color: rgba(20, 20, 40, 0.85);
+            --card-bg-color: rgba(10, 10, 10, 0.5);
+            --border-color: rgba(212, 175, 55, 0.2);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         body {
@@ -328,21 +336,21 @@
         
         .category-card {
             background: var(--card-bg-color);
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             position: relative;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
             transform: translateZ(0);
             will-change: transform;
             cursor: pointer;
         }
 
         .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
             border-color: var(--secondary-color);
         }
 
@@ -428,20 +436,20 @@
 
         .product-card {
             background: var(--card-bg-color);
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             position: relative;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
             transform: translateZ(0);
             will-change: transform;
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
             border-color: var(--secondary-color);
         }
 
@@ -450,9 +458,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #f8f8f8;
+            background: rgba(255, 255, 255, 0.05);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .product-image {
@@ -487,7 +496,7 @@
         .product-title {
             font-size: 1rem;
             margin-bottom: 8px;
-            color: white;
+            color: var(--light-color);
             font-weight: 600;
             height: 48px;
             overflow: hidden;
@@ -498,8 +507,8 @@
         }
 
         .product-code {
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
             margin-bottom: 8px;
         }
 
@@ -517,12 +526,12 @@
         }
 
         .product-button {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: var(--secondary-color);
             color: var(--dark-color);
             border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-weight: bold;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
@@ -531,8 +540,10 @@
         }
 
         .product-button:hover {
+            background: var(--primary-color);
+            color: var(--dark-color);
             transform: translateY(-2px);
-            box-shadow: 0 3px 10px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
         }
 
         .pagination {
@@ -852,7 +863,7 @@
         </div>
         
         <div class="categories-grid" id="categoriesGrid">
-            <div class="category-card" data-category="yuzuk">
+            <div class="category-card" data-category="yuzuk" data-aos="fade-up">
                 <div class="category-image-container">
                     <img src="alyans.png" alt="Yüzük" class="category-image">
                 </div>
@@ -861,7 +872,7 @@
                 </div>
             </div>
             
-            <div class="category-card" data-category="ajda">
+            <div class="category-card" data-category="ajda" data-aos="fade-up" data-aos-delay="100">
                 <div class="category-image-container">
                     <img src="ajda.png" alt="Ajda" class="category-image">
                 </div>
@@ -871,7 +882,7 @@
             </div>
 
             
-            <div class="category-card" data-category="burma">
+            <div class="category-card" data-category="burma" data-aos="fade-up" data-aos-delay="200">
                 <div class="category-image-container">
                     <img src="burma.png" alt="Burma" class="category-image">
                 </div>
@@ -880,7 +891,7 @@
                 </div>
             </div>
             
-            <div class="category-card" data-category="mega">
+            <div class="category-card" data-category="mega" data-aos="fade-up" data-aos-delay="300">
                 <div class="category-image-container">
                     <img src="mega.png" alt="Mega" class="category-image">
                 </div>
@@ -917,6 +928,8 @@
     <div class="neon-border neon-bottom"></div>
     <div class="neon-border neon-left"></div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/basicLightbox/5.0.4/basicLightbox.min.js"></script>
     <script>
     function clearAllCookies() {
         document.cookie.split(";").forEach(function(c) {
@@ -942,6 +955,12 @@
     window.onload = function() {
         clearAllCookies();
         
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50,
+        });
+
         const loader = document.getElementById('loader');
         const progressBar = document.getElementById('progressBar');
         const body = document.body;
@@ -1091,28 +1110,48 @@
         const productsGrid = document.getElementById('productsGrid');
         
         if (products.length === 0) {
-            productsGrid.innerHTML = '<div class="no-products">Aradığınız kriterlere uygun ürün bulunamadı.</div>';
+            productsGrid.innerHTML = '<div class="no-products" data-aos="fade-in">Aradığınız kriterlere uygun ürün bulunamadı.</div>';
             return;
         }
         
-        productsGrid.innerHTML = products.map(product => `
-    <div class="product-card">
-        ${product.indirim > 0 ? `<div class="product-badge">-%${product.indirim}</div>` : ''}
-        <div class="product-image-container">
-            <img src="https://katalog.gunesegel.net/resimler/${Array.isArray(product.resim) ? product.resim[0] : product.resim}" 
-                 alt="${product.urun_adi}" 
-                 class="product-image" 
-                 onerror="this.src='https://via.placeholder.com/300x300/f8f8f8/999999?text=Resim+Yok'">
-        </div>
-        <div class="product-info">
-            <h3 class="product-title">${product.urun_adi}</h3>
-            <div class="product-code">Stok Kodu: ${product.stok_kodu}</div>
-            <div class="product-actions">
-                <button class="product-button" onclick="window.location.href='urun/?kod=${product.stok_kodu}'">Detaylar</button>
+        productsGrid.innerHTML = products.map((product, index) => {
+            const originalImageSrc = `https://katalog.gunesegel.net/resimler/${Array.isArray(product.resim) ? product.resim[0] : product.resim}`;
+            const compressedImageSrc = `https://images.weserv.nl/?url=${encodeURIComponent(originalImageSrc)}&q=70`;
+
+            return `
+            <div class="product-card" data-aos="fade-up" data-aos-delay="${(index % 4) * 100}">
+                ${product.indirim > 0 ? `<div class="product-badge">-%${product.indirim}</div>` : ''}
+                <div class="product-image-container" data-original-src="${originalImageSrc}">
+                    <img src="${compressedImageSrc}"
+                         alt="${product.urun_adi}"
+                         class="product-image"
+                         onerror="this.src='https://via.placeholder.com/300x300/f8f8f8/999999?text=Resim+Yok'">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">${product.urun_adi}</h3>
+                    <div class="product-code">Stok Kodu: ${product.stok_kodu}</div>
+                    <div class="product-actions">
+                        <button class="product-button" onclick="window.location.href='urun/?kod=${product.stok_kodu}'">Detaylar</button>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-`).join('');
+        `}).join('');
+
+        // Add lightbox functionality to new product images
+        document.querySelectorAll('.product-image-container').forEach(item => {
+            item.addEventListener('click', event => {
+                event.preventDefault();
+                const originalSrc = item.getAttribute('data-original-src');
+                if (originalSrc) {
+                    basicLightbox.create(`<img src="${originalSrc}">`).show();
+                }
+            });
+        });
+
+        // After rendering, refresh AOS to detect new elements
+        setTimeout(() => {
+            AOS.refresh();
+        }, 100);
     }
 
     // Sayfalama linklerini oluşturma fonksiyonu
